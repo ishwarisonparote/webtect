@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="era.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    table, td {
+  border: 1px solid white;
+  height: 80%;
+  width: 80%;
+  font color: white;
+}
+</style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div id="ui">
+                    <form class="form-group">
+                        <div class="row">
+                            <div>
+                                <h1>REGISTRATION FORM</h1><br><br><br><br>
+                                <h2>Register Here...</h2>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>First Name:</label>
+                                <input type="text" id = "name1" name="fname" class="form-control" Placeholder="Enter your first name....">
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Last Name:</label>
+                                <input type="text" id = "name2" name="lname" class="form-control" Placeholder="Enter your last name....">
+                            </div>
+                        </div>
+                        <label>E-mail</label>
+                        <input type="text" id = "email1" name="email" class="form-control" Placeholder="Enter your E-mail....">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Password:</label>
+                                <input type="password" id="pass" name="pname" class="form-control" Placeholder="Enter New password....">
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Re-type Password:</label>
+                                <input type="password"  id = "rpass" name="lname" class="form-control" Placeholder="Re-type password....">
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Mobile no:</label>
+                                <input type="mobile no" id ="phone" name="number" class="form-control" Placeholder="Mobile number....">
+                            </div><br>
+                        </div>
+                        <select class="form-control">
+                            <option>Choose Gender....</option>
+                            <option>Male</option>
+                            
+                            <option>Female</option>
+                            <option>others</option>
+                        </select>
+                        <div class="container">
+                            <button type="button" class = "btn btn-dark" onclick="myFunct();">SUBMIT</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        
+    </div>
+    
+
+
+    <div class="container">
+      <div class="content-first">
+        <h4 class="text-uppercase">LIST OF PEOPLE REGISTERED:- </h4>
+        <table id="myTable"></table>
+        <!-- <button type="button" class = "btn btn-dark" onclick="myFunct();">SUBMIT</button> -->
+    </div>
+</div>
+</body>
+<script>
+
+function myFunct() {
+
+  var z = document.getElementById("name1").value;
+  if (z == "")
+  {
+    alert("First Name must be filled out");
+    return false;
+  }
+
+  var z = document.getElementById("name2").value;
+  if (z == "")
+  {
+    alert("last Name must be filled out");
+    return false;
+  }
+
+  var df = document.getElementById("email1").value;
+  if (df == "")
+  {
+    alert("EMAIL must be filled out");
+    return false;
+  }
+  var n = df.includes("@");
+  if(n==false)
+  {
+    alert("Enter a valid Email address")
+    return false
+  }
+
+  var z = document.getElementById("pass").value;
+  if (z == "")
+  {
+    alert("PLease enter your password");
+    return false;
+  }
+
+  var z = document.getElementById("rpass").value;
+  if (z == "")
+  {
+    alert("PLease re-enter your password");
+    return false;
+  }
+  var zz = document.getElementById("phone").value;
+  if (zz == "")
+  {
+    alert("Phone Number should be filled");
+    return false;
+  }
+  y = parseInt(zz);
+  if(y>10000000000 || y <1000000000 || isNaN(zz))
+  {
+    alert("Enter a valid phone number");
+    return false;
+  }
+
+
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3= row.insertCell(2);
+  cell1.innerHTML = document.getElementById("name1").value;
+  cell2.innerHTML = document.getElementById("name2").value;
+  cell3.innerHTML = document.getElementById("email1").value;
+
+
+  document.getElementById("name1").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("pass").value = "";
+  document.getElementById("rpass").value = "";
+}
+
+</script>
+
+</html>
